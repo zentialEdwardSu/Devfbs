@@ -1,0 +1,92 @@
+{
+  "name": "devfbs",
+  "displayName": "Devfbs",
+  "description": "A vscode plungin to make the dream of facing-broswer-dev come true",
+  "version": "0.0.12-alpha",
+  "engines": {
+    "vscode": "^1.62.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+	"*"
+  ],
+  "main": "./src/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "extansion.helloWorld",
+        "title": "Hell0 World"
+      }
+    ],
+    "configuration": {
+      	"type": "object",
+      	"title": "Devfbs",
+      	"properties": {
+          	"devfbs.UserBroswer": {
+            	  "type": "string",
+				  "enum": [
+					  "chrome",
+					  "MicrosoftEdge",
+					  "Chromium",
+					  "firefox"
+					],
+              		"default": "chrome",
+              		"description": "Choose a Broswer to process your trip of devloping facing broswer"
+          	},
+			"defbs.UserSearchengine":{
+				"type":"string",
+				"enum":[
+					"Baidu",
+					"Google",
+					"Stackoverflow",
+          			"other"
+				],
+				"default":"Baidu",
+				"description":"Where you want help from"
+			},
+			"devfbs.UserModifyEngine":{
+				"type":"string",
+				"default":"",
+				"description": "Your modify search-engine url(Only take effect when you choose `other`in the `UserSearchengine` part"
+			},
+			"devfbs.ShowInfomessage":{
+				"type":"boolean",
+				"default":true,
+				"description": "if info message will apear"
+			}
+      	}
+  	},
+    "keybindings": [
+      {
+        "command": "extansion.search",
+        "key": "alt+/",
+        "when": "editorTextFocus"
+      }
+    ]
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "node ./test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/glob": "^7.1.4",
+    "@types/mocha": "^9.0.0",
+    "@types/node": "14.x",
+    "@types/vscode": "^1.62.0",
+    "@vscode/test-electron": "^1.6.2",
+    "eslint": "^8.1.0",
+    "glob": "^7.1.7",
+    "mocha": "^9.1.3",
+    "typescript": "^4.4.4"
+  },
+  "dependencies": {
+    "opn": "^6.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zentialEdwardSu/devfbs.git"
+  }
+}
